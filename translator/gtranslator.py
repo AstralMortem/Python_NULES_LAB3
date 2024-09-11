@@ -5,9 +5,9 @@ from .utils import _format_table, _code_lang
 translator = Translator()
 
 
-def TransLate(text, dest, scr="auto"):
+def TransLate(text, dest, src="auto"):
     try:
-        result = translator.translate(text, dest=dest, scr=scr)
+        result = translator.translate(text, dest=dest, src=src)
         return result.text
     except Exception as e:
         return f"Error: {e}"
@@ -36,13 +36,13 @@ def LanguageList(text: str, out: str = "screen"):
 
     rows = [["N", "Language", "ISO-639 code", "Text"]]
     for idx, lang in enumerate(LANGUAGES):
-        rows.append([idx + 1, LANGUAGES[lang], lang, TransLate(text, lang, "auto")])
+        rows.append([idx + 1, LANGUAGES[lang], lang, TransLate(text, lang)])
 
     if out == "screen":
         for row in _format_table(rows):
             print(row)
     elif out == "file":
-        with open("output_g.txt", "w", encoding="utf8") as new_file:
+        with open("output_google.txt", "w", encoding="utf8") as new_file:
             for row in _format_table(rows):
                 new_file.write("\n" + row)
             new_file.close()

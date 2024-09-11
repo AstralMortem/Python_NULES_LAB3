@@ -1,9 +1,4 @@
-from translator.dtranslator import (
-    TransLate,
-    LangDetect,
-    LanguageList,
-    CodeLang,
-)
+from translator.dtranslator import TransLate, LangDetect, LanguageList, CodeLang
 
 if __name__ == "__main__":
     print(TransLate("Hello", "ja", "en"))

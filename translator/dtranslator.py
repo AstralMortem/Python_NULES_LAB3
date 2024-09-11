@@ -1,7 +1,7 @@
 from typing import Literal
 from deep_translator import DeeplTranslator
-from langdetect import detect, detect_langs
-from .utils import _format_table, _translate_list, _code_lang
+from langdetect import detect_langs
+from .utils import _format_table, _code_lang
 
 
 def get_deepl(target="en", source="auto", **kwargs):
@@ -66,7 +66,7 @@ def LanguageList(text: str, out: str = "screen"):
         for row in _format_table(rows):
             print(row)
     elif out == "file":
-        with open("output_g.txt", "w", encoding="utf8") as new_file:
+        with open("output_deepl.txt", "w", encoding="utf8") as new_file:
             for row in _format_table(rows):
                 new_file.write("\n" + row)
             new_file.close()
